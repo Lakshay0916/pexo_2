@@ -2,7 +2,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, Request, Response, status
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.jwt_handler import (
@@ -66,7 +66,10 @@ async def _issue_tokens(user: AppUser, db: AsyncSession, response: Response) -> 
 
 @router.post("/login", response_model=TokenResponse)
 async def login(user_in: UserLogin, response: Response, db: Annotated[AsyncSession, Depends(get_db)]):
-    result = await db.execute(select(AppUser).filter(AppUser.email == user_in.email))
+    # Pydantic's EmailStr lowercases the domain on validation, and email is
+    # conventionally case-insensitive end to end — so compare case-insensitively
+    # rather than relying on stored values happening to already be lowercase.
+    result = await db.execute(select(AppUser).filter(func.lower(AppUser.email) == user_in.email.lower()))
     user = result.scalars().first()
     if not user or not verify_password(user_in.password, user.password_hash):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
