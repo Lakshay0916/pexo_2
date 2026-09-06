@@ -1,7 +1,10 @@
-from datetime import date, datetime
-from sqlalchemy import String, Integer, Float, Date, DateTime, ForeignKey
+from datetime import datetime
+
+from sqlalchemy import DateTime, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from app.core.database import Base
+
 
 class Payslip(Base):
     __tablename__ = "payslips"

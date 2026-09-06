@@ -1,7 +1,10 @@
 from datetime import date, datetime
-from sqlalchemy import String, Integer, Float, Date, DateTime
+
+from sqlalchemy import Date, DateTime, Float, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from app.core.database import Base
+
 
 class Payrun(Base):
     __tablename__ = "payruns"

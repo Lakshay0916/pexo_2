@@ -101,7 +101,7 @@ export const useAttendanceDetailQuery = (id) => useQuery({
           manager: e.manager_name || 'None',
         };
       } catch (_) {
-        // employee lookup is best-effort — fall back to raw attendance fields
+        empInfo = null;
       }
     }
     return normalizeAttendanceDetail(data, empInfo);

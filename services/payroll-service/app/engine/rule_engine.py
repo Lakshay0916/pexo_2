@@ -1,5 +1,7 @@
-from typing import List, Dict, Any
+from typing import Any, Dict, List
+
 from app.engine.expression_evaluator import ExpressionEvaluator
+
 
 class RuleEngine:
     def __init__(self, rules: List[Dict[str, Any]]):

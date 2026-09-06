@@ -1,7 +1,10 @@
 from datetime import datetime
-from sqlalchemy import String, Integer, Float, DateTime, Text
+
+from sqlalchemy import DateTime, Float, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from app.core.database import Base
+
 
 class SalaryRule(Base):
     __tablename__ = "salary_rules"

@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from app.core.config import settings
-from app.routers import structures, rules, payruns, payslips
+from app.routers import payruns, payslips, rules, structures
 
 app = FastAPI(
     title=settings.PROJECT_NAME,

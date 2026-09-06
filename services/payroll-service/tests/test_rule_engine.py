@@ -1,5 +1,5 @@
-import pytest
 from app.engine.rule_engine import RuleEngine
+
 
 def test_salary_rule_engine_basic_computation():
     rules = [

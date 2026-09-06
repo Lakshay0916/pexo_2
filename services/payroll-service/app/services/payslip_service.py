@@ -1,6 +1,8 @@
-from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.models.payslip import Payslip
+
 
 class PayslipService:
     def __init__(self, db: AsyncSession):

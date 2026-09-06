@@ -1,5 +1,6 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+
 class Settings(BaseSettings):
     PROJECT_NAME: str = "Pexo - Payroll Service"
     DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/Pexo"
